@@ -1,0 +1,29 @@
+{
+  "name": "parse-js",
+  "version": "0.0.1",
+  "description": "Parser library implemented in Javascript, based on FOAM1 parsers",
+  "main": "dist/parse.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "node src/parse.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdittmer/parse-js.git"
+  },
+  "keywords": [
+    "javascript"
+  ],
+  "author": "Mark Dittmer",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/mdittmer/parse-js/issues"
+  },
+  "homepage": "https://github.com/mdittmer/parse-js#readme",
+  "eslintConfig": {
+    "extends": "google"
+  },
+  "dependencies": {
+    "ya-stdlib-js": "git://github.com/mdittmer/ya-stdlib-js.git"
+  }
+}
