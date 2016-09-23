@@ -2,10 +2,9 @@
   "name": "parse-js",
   "version": "0.0.1",
   "description": "Parser library implemented in Javascript, based on FOAM1 parsers",
-  "main": "dist/parse.js",
+  "main": "src/parse.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "node src/parse.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
