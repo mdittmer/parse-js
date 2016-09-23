@@ -251,7 +251,7 @@ function toJSON(o) {
   if ( type === 'undefined' ) return undefined;
   if ( o === null ) return null;
   if ( typeof o.toJSON === 'function' )
-    return o.toJSON.apply(o, stdlib.argsToArray(arguments).slice(1));
+    return o.toJSON.apply(o, Array.from(arguments).slice(1));
   // TODO: Do all relevant platforms support Array.isArray?
   else if ( Array.isArray(o) )
     return o.map(toJSON);
@@ -306,7 +306,7 @@ function funcFromJSON(_________) {
       }
       str += 'ret = function ' + json.label + '() { ' +
         'return __function__.apply(this, __args__.concat(' +
-        'stdlib.argsToArray(arguments))); }';
+        'Array.from(arguments))); }';
     } else {
       str += 'ret = __function__.bind(fromJSON(' +
         JSON.stringify(json.context) + ')' + json.args.map(function(arg) {
@@ -560,7 +560,7 @@ TokenParserController.prototype = Object.create(
           },
           function tseq1(n) {
             var tseqParser = this.factories.tseq.apply(
-              this, stdlib.argsToArray(arguments).slice(1));
+              this, Array.from(arguments).slice(1));
             return function(ps) {
               var ret = this.parse(tseqParser, ps);
               if ( ret === null || ret.value === null ) return ret;
@@ -627,7 +627,7 @@ function defineParserFactories() {
   function decorateParserFactory(f) {
     var argNames = stdlib.getArgNames(f);
     var f2 = decorateFunction(function() {
-      var args = stdlib.argsToArray(arguments);
+      var args = Array.from(arguments);
       var closure = {}, i;
       for ( i = 0; i < argNames.length; i++ ) {
         closure[argNames[i]] = args[i];
@@ -850,7 +850,7 @@ addParserFactories(
 
   // Like seq, except returns result of n'th parser.
   function seq1(n /*, vargs */) {
-    var args = this.prepArgs(stdlib.argsToArray(arguments).slice(1));
+    var args = this.prepArgs(Array.from(arguments).slice(1));
 
     return function(ps) {
       var res = this.factories.seq.apply(this, args).call(this, ps);
